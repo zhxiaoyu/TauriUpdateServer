@@ -161,13 +161,13 @@ namespace TauriUpdateServer.Controllers
 
             var s3Client = new AmazonS3Client(s3AccessKey, s3SecretKey, new AmazonS3Config { ServiceURL = s3EndPoint });
 
-            var transferUtility = new TransferUtility(s3Client);
-
+            var transferfileUtility = new TransferUtility(s3Client);
             var fileKey = $"{name}/{target}/{arch}/{version}/{name}-{version}{Path.GetExtension(file.FileName)}";
-            var sigKey = $"{name}/{target}/{arch}/{version}/{name}-{version}{Path.GetExtension(sig.FileName)}";
+            await transferfileUtility.UploadAsync(filePath, s3BucketName, fileKey);
 
-            await transferUtility.UploadAsync(filePath, s3BucketName, fileKey);
-            await transferUtility.UploadAsync(sigPath, s3BucketName, sigKey);
+            var transfersigUtility = new TransferUtility(s3Client);
+            var sigKey = $"{name}/{target}/{arch}/{version}/{name}-{version}{Path.GetExtension(sig.FileName)}";
+            await transfersigUtility.UploadAsync(sigPath, s3BucketName, sigKey);
 
             return Ok();
         }
