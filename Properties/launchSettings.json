@@ -1,23 +1,18 @@
-﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:39956",
-      "sslPort": 0
-    }
-  },
+{
   "profiles": {
     "http": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5289",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "S3_ENDPOINT": "http://192.168.1.91:9000",
+        "S3_ACCESS_KEY": "J5xMXmja3yjOSHF4bDVf",
+        "S3_SECRET_KEY": "ccxuxOQeyNt0T8Bi9wCDjMSNVzQuqNZ5PuXR0oUF",
+        "S3_BUCKET_NAME": "tauri"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5289"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -26,6 +21,15 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:39956",
+      "sslPort": 0
     }
   }
 }
