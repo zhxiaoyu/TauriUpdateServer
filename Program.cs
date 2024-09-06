@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Http.Features;
+
 namespace TauriUpdateServer
 {
     public class Program
@@ -22,7 +24,10 @@ namespace TauriUpdateServer
                            .AllowAnyHeader();
                 });
             });
-
+            builder.Services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 524288000; // 500 MB
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
